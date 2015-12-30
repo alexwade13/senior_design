@@ -1,0 +1,94 @@
+#sidebar {
+    width: 30%;
+    float: right;
+    margin-top: 90px;
+    background-color: orange;
+}
+
+.timebox {
+    width: 100%;
+    height: 20px;
+    background: white;
+    border: 1px solid gray;
+    border-bottom: none;
+    border-bottom: 1px;
+}
+
+.weekday {
+    width: 16%;
+    float: left;
+    border: 1px solid gray;
+}
+
+.timeslot {
+    background: #00397C !important;
+    color: #fff;
+    height: 41px !important;
+}
+
+.halfhour {
+  border-top: dashed 1px;
+}
+
+#timeslot {
+    font-weight: normal;
+    background: #00397C !important;
+    text-align: center;
+    color: #fff;
+    font-family: "Avenir W01", sans-serif;
+}
+
+.th {
+    background: #00397C !important;
+    height: 20px !important;
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    font-family: "Avenir W01", sans-serif;
+
+}
+
+.extra {
+    width: auto;
+    float: left;
+}
+
+/* --------------- Tabs --------------- */
+/* Clearfix */
+.tab-link:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+
+.tab-link .tab-link-active  {
+	float: center;
+    padding:9px 15px;
+    display:block;
+    border-radius:3px 3px 3px 0px;
+	border-color: blue;
+    background: orange;
+    font-size:16px;
+    font-weight:600;
+    color:#5282AA;
+    transition:all linear 0.15s;
+    font-family: "Avenir W01", sans-serif;
+}
+
+h3.active, h3.active:hover {
+    background:#D5DDE7;  /* tab background */
+    color: #5282AA;      /* text color */
+}
+
+.tab-active {
+    display: block;
+    padding: 15px;
+    height: 100%;
+    border-radius: 3px;
+    /* box-shadow:-1px 1px 1px rgba(0,0,0,0.15); */
+    background: white;
+}
+
+.tab {
+    display:none;
+}

@@ -1,0 +1,91 @@
+Between conflict resolution and export to .csv:
+/*
+    $("#copt2").click(function(){
+        var newObj = jQuery.extend(true, {}, obj);
+        delete newObj[crn];
+        nextCalendar();
+        obj = jQuery.extend(true, {}, newObj);
+        storage.remove(String(crn), function() {
+            updateCalendar();
+        });
+
+        storage.get(function(result){
+            obj[classObj.CRN] = classObj;
+            storage.set(obj, function() {
+                updateCalendar();
+            });
+        });
+
+    });
+    */
+
+From export to .csv debugging:
+// SET TO "true" IF DEBUGGING, ELSE SET "false"
+    var DEBUG_toHours = false;
+    var DEBUG_toTime = false;
+    var DEBUG_getTimeslotHrsOf = false;
+    var DEBUG_getCourseSessions = false;
+
+if (DEBUG_toHours) {
+        console.log( "testing toHours()..." );
+        var timeA = "08:00am"; var hoursA = toHours(timeA); console.log( "0800: " + hoursA );
+        var timeB = "8:00am"; var hoursB = toHours(timeB); console.log( "0800: " + hoursB );
+        var timeC = "12:00pm"; var hoursC = toHours(timeC); console.log( "1200: " + hoursC );
+        var timeD = "11:52am"; var hoursD = toHours(timeD); console.log( "1152: " + hoursD );
+        var timeE = "3:52pm"; var hoursE = toHours(timeE); console.log( "1552: " + hoursE );
+        var timeF = "03:52pm"; var hoursF = toHours(timeF); console.log( "1552: " + hoursF );
+        var timeG = "12:00am"; var hoursG = toHours(timeG); console.log( "0000: " + hoursG );
+    }
+
+if (DEBUG_toTime) {
+        console.log( "Testing toTime..." );
+        var hoursA = 352; var timeA = toTime(hoursA); console.log( "3:52AM: " + timeA );
+        var hoursB = 1152; var timeB = toTime(hoursB); console.log( "11:52AM: " + timeB );
+        var hoursC = 0; var timeC = toTime(hoursC); console.log( "12:00AM: " + timeC );
+        var hoursD = 1352; var timeD = toTime(hoursD); console.log( "1:52PM: " + timeD );
+        var hoursE = 1200; var timeE = toTime(hoursE); console.log( "12:00PM: " + timeE );
+        var hoursF = 1800; var timeF = toTime(hoursF); console.log( "6:00PM: " + timeF );
+    }
+
+if (DEBUG_getTimeslotHrsOf) {
+        var timeslotA = getTimeslotHrsOf(0); console.log( "800: " + timeslotA ); // "Time" column
+        var timeslotB = getTimeslotHrsOf(7); console.log( "830: " + timeslotB ); // "Monday" column
+        var timeslotC = getTimeslotHrsOf(26); console.log( "1000: " + timeslotC ); // "Tuesday" column
+        var timeslotD = getTimeslotHrsOf(51); console.log( "1200: " + timeslotD ); // "Wednesday" columm
+        var timeslotE = getTimeslotHrsOf(58); console.log( "1230: " + timeslotE ); // "Thursday" column
+        var timeslotF = getTimeslotHrsOf(167); console.log( "2130: " + timeslotF ); // "Friday" column
+    }
+
+if (DEBUG_getCourseSessions) {
+        storage.get( function(result) {
+            var courses = result;
+            for ( var course in courses ) {
+                var sessions = getCourseSessions(courses[course]);
+                for (var sesh in sessions) {
+                    console.log(sessions[sesh]);
+                }
+            }
+        });
+    } 
+
+Between Setup "Next" button and NextCalendar:
+ //$("#next").after("<button id='clearallstorage'>Clear All</button>");
+    //awesome debuging clear all
+    //$("#clearallstorage").click(function(){
+    //   storage.clear();
+    //}); 
+
+from the defn of clearStorage:
+//$(".timebox").not(".th").not(".timeslot").text("");
+
+From f2 search by CRN/Instructor...
+//document.getElementById('q0').setAttribute("type", "time");
+
+From f2 time search:
+//document.getElementById('q0').setAttribute("type", "time");
+
+f1 CRN/Instr...
+//document.getElementById('q0').setAttribute("type", "time");
+
+f1 time search
+//document.getElementById('q0').setAttribute("type", "time");

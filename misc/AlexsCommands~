@@ -1,0 +1,16 @@
+//for creating branch
+git checkout -b [branch name]
+//for changing a branch
+git checkout [branch name]
+git fetch 
+git pull origin [ branch name]
+//
+git add -A
+//start to work on  
+git rebase
+
+
+For git prompt:
+1) move .git-prompt.sh into root directory
+2) at the top of .bash_profile put: source ~/.git-prompt.sh
+3

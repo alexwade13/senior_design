@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>Sidebar Test</title>
+    <script src="https://apis.google.com/js/client.js"></script>
+    <script type="text/javascript">
+
+        var ApiKey = 'AIzaSyBj8beZN35sBkhc6_Dn5_Gymgq8_AJ0liM';
+        var scopes = 'https://www.googleapis.com/auth/calendar';
+        var clientId = '637150883276-n09l4a128cufftk53o4otsgc4n1vopnt.apps.googleusercontent.com';
+
+        function handleClientLoad() {
+            gapi.client.setApiKey(apiKey);
+            window.setTimeout(checkAuth, 1);
+        }
+
+        function checkAuth() {
+            //gapi.auth.authorize( {client_id: clientId, scope: scopes, immediate: true), handleAuthResult );
+        }
+
+        function handleAuthResult(authResult) {
+            var auth_button = document.getElementById('auth-button');
+            if (authResult && !authResult.error) {
+                auth_button.style.visibility = 'hidden';
+                makeApiCall();
+            } else {
+                auth_button.style.visibility = '';
+                auth_button.onclick = handleAuthClick;
+            }
+        }
+
+        function handleAuthClick(event) {
+            gapi.auth.authorize( {client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+            return false;
+        }
+
+        // Load API and make API call.
+        function makeApiCall() {
+            gapi.client.load('calendar', 'v3', function() {
+                var request = gapi.client.calendar.events.insert({
+                    'calendarId': 'primary',
+                    //'resource': resource
+                });
+                request.execute(function(resp) {
+                    console.log(resp);
+                });
+            });
+        }
+
+    </script>
+  </head>
+
+  <body>
+
+    <div id="fb-root"></div>
+
+    <!-- Includes jQuery 2.1.0 for use by script.js -->
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+    <!-- Includes the jQuery UI toolset -->
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+    <!-- Links the stylesheet to this file -->
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+
+    <div class="extra"></div>
+
+
+    <!-- START COPY -->
+    <div id="sidebar">
+        <h2 class="active">Calendar</h2>
+        <div id="calendar">
+            <div id="calheader">
+                <button id="prev">Previous</button>
+                <button id="display">Info</button>
+                <button id="clear">Clear</button>
+                <button id="next">Next</button>
+                <br>
+            </div>
+            <div id="timeslot" class="weekday timeslot">
+                <div id="mainTime" class="timebox timeslot th"></div>
+                <div id="main8AM" class="timebox timeslot">8
+                    <wbr>AM</div>
+                <div id="main9AM" class="timebox timeslot">9
+                    <wbr>AM</div>
+                <div id="main10AM" class="timebox timeslot">10
+                    <wbr>AM</div>
+                <div id="main11AM" class="timebox timeslot">11
+                    <wbr>AM</div>
+                <div id="main12PM" class="timebox timeslot">12
+                    <wbr>PM</div>
+                <div id="main1PM" class="timebox timeslot">1
+                    <wbr>PM</div>
+                <div id="main2PM" class="timebox timeslot">2
+                    <wbr>PM</div>
+                <div id="main3PM" class="timebox timeslot">3
+                    <wbr>PM</div>
+                <div id="main4PM" class="timebox timeslot">4
+                    <wbr>PM</div>
+                <div id="main5PM" class="timebox timeslot">5
+                    <wbr>PM</div>
+                <div id="main6PM" class="timebox timeslot">6
+                    <wbr>PM</div>
+                <div id="main7PM" class="timebox timeslot">7
+                    <wbr>PM</div>
+                <div id="main8PM" class="timebox timeslot">8
+                    <wbr>PM</div>
+                <div id="main9PM" class="timebox timeslot">9
+                    <wbr>PM</div>
+            </div>
+            <div id="monday" class="weekday">
+                <div id="monTime" class="timebox th">Mon</div>
+                <div id="mon8AM" class="timebox"></div>
+                <div id="mon830AM" class="timebox halfhour"></div>
+                <div id="mon9AM" class="timebox"></div>
+                <div id="mon930AM" class="timebox halfhour"></div>
+                <div id="mon10AM" class="timebox"></div>
+                <div id="mon1030AM" class="timebox halfhour"></div>
+                <div id="mon11AM" class="timebox"></div>
+                <div id="mon1130AM" class="timebox halfhour"></div>
+                <div id="mon12PM" class="timebox"></div>
+                <div id="mon1230PM" class="timebox halfhour"></div>
+                <div id="mon1PM" class="timebox"></div>
+                <div id="mon130PM" class="timebox halfhour"></div>
+                <div id="mon2PM" class="timebox"></div>
+                <div id="mon230PM" class="timebox halfhour"></div>
+                <div id="mon3PM" class="timebox"></div>
+                <div id="mon330PM" class="timebox halfhour"></div>
+                <div id="mon4PM" class="timebox"></div>
+                <div id="mon430PM" class="timebox halfhour"></div>
+                <div id="mon5PM" class="timebox"></div>
+                <div id="mon530PM" class="timebox halfhour"></div>
+                <div id="mon6PM" class="timebox"></div>
+                <div id="mon630PM" class="timebox halfhour"></div>
+                <div id="mon7PM" class="timebox"></div>
+                <div id="mon730PM" class="timebox halfhour"></div>
+                <div id="mon8PM" class="timebox"></div>
+                <div id="mon830PM" class="timebox halfhour"></div>
+                <div id="mon9PM" class="timebox"></div>
+                <div id="mon930PM" class="timebox halfhour"></div>
+            </div>
+            <div id="tuesday" class="weekday">
+                <div id="tuesTime" class="timebox th">Tues</div>
+                <div id="tues8AM" class="timebox"></div>
+                <div id="tues830AM" class="timebox halfhour"></div>
+                <div id="tues9AM" class="timebox"></div>
+                <div id="tues930AM" class="timebox halfhour"></div>
+                <div id="tues10AM" class="timebox"></div>
+                <div id="tues1030AM" class="timebox halfhour"></div>
+                <div id="tues11AM" class="timebox"></div>
+                <div id="tues1130AM" class="timebox halfhour"></div>
+                <div id="tues12PM" class="timebox"></div>
+                <div id="tues1230PM" class="timebox halfhour"></div>
+                <div id="tues1PM" class="timebox"></div>
+                <div id="tues130PM" class="timebox halfhour"></div>
+                <div id="tues2PM" class="timebox"></div>
+                <div id="tues230PM" class="timebox halfhour"></div>
+                <div id="tues3PM" class="timebox"></div>
+                <div id="tues330PM" class="timebox halfhour"></div>
+                <div id="tues4PM" class="timebox"></div>
+                <div id="tues430PM" class="timebox halfhour"></div>
+                <div id="tues5PM" class="timebox"></div>
+                <div id="tues530PM" class="timebox halfhour"></div>
+                <div id="tues6PM" class="timebox"></div>
+                <div id="tues630PM" class="timebox halfhour"></div>
+                <div id="tues7PM" class="timebox"></div>
+                <div id="tues730PM" class="timebox halfhour"></div>
+                <div id="tues8PM" class="timebox"></div>
+                <div id="tues830PM" class="timebox halfhour"></div>
+                <div id="tues9PM" class="timebox"></div>
+                <div id="tues930PM" class="timebox halfhour"></div>
+            </div>
+            <div id="wednesday" class="weekday">
+                <div id="wedTime" class="timebox th">Wed</div>
+                <div id="wed8AM" class="timebox"></div>
+                <div id="wed830AM" class="timebox halfhour"></div>
+                <div id="wed9AM" class="timebox"></div>
+                <div id="wed930AM" class="timebox halfhour"></div>
+                <div id="wed10AM" class="timebox"></div>
+                <div id="wed1030AM" class="timebox halfhour"></div>
+                <div id="wed11AM" class="timebox"></div>
+                <div id="wed1130AM" class="timebox halfhour"></div>
+                <div id="wed12PM" class="timebox"></div>
+                <div id="wed1230PM" class="timebox halfhour"></div>
+                <div id="wed1PM" class="timebox"></div>
+                <div id="wed130PM" class="timebox halfhour"></div>
+                <div id="wed2PM" class="timebox"></div>
+                <div id="wed230PM" class="timebox halfhour"></div>
+                <div id="wed3PM" class="timebox"></div>
+                <div id="wed330PM" class="timebox halfhour"></div>
+                <div id="wed4PM" class="timebox"></div>
+                <div id="wed430PM" class="timebox halfhour"></div>
+                <div id="wed5PM" class="timebox"></div>
+                <div id="wed530PM" class="timebox halfhour"></div>
+                <div id="wed6PM" class="timebox"></div>
+                <div id="wed630PM" class="timebox halfhour"></div>
+                <div id="wed7PM" class="timebox"></div>
+                <div id="wed730PM" class="timebox halfhour"></div>
+                <div id="wed8PM" class="timebox"></div>
+                <div id="wed830PM" class="timebox halfhour"></div>
+                <div id="wed9PM" class="timebox"></div>
+                <div id="wed930PM" class="timebox halfhour"></div>
+            </div>
+            <div id="thursday" class="weekday">
+                <div id="thursTime" class="timebox th">Thurs</div>
+                <div id="thurs8AM" class="timebox"></div>
+                <div id="thurs830AM" class="timebox halfhour"></div>
+                <div id="thurs9AM" class="timebox"></div>
+                <div id="thurs930AM" class="timebox halfhour"></div>
+                <div id="thurs10AM" class="timebox"></div>
+                <div id="thurs1030AM" class="timebox halfhour"></div>
+                <div id="thurs11AM" class="timebox"></div>
+                <div id="thurs1130AM" class="timebox halfhour"></div>
+                <div id="thurs12PM" class="timebox"></div>
+                <div id="thurs1230PM" class="timebox halfhour"></div>
+                <div id="thurs1PM" class="timebox"></div>
+                <div id="thurs130PM" class="timebox halfhour"></div>
+                <div id="thurs2PM" class="timebox"></div>
+                <div id="thurs230PM" class="timebox halfhour"></div>
+                <div id="thurs3PM" class="timebox"></div>
+                <div id="thurs330PM" class="timebox halfhour"></div>
+                <div id="thurs4PM" class="timebox"></div>
+                <div id="thurs430PM" class="timebox halfhour"></div>
+                <div id="thurs5PM" class="timebox"></div>
+                <div id="thurs530PM" class="timebox halfhour"></div>
+                <div id="thurs6PM" class="timebox"></div>
+                <div id="thurs630PM" class="timebox halfhour"></div>
+                <div id="thurs7PM" class="timebox"></div>
+                <div id="thurs730PM" class="timebox halfhour"></div>
+                <div id="thurs8PM" class="timebox"></div>
+                <div id="thurs830PM" class="timebox halfhour"></div>
+                <div id="thurs9PM" class="timebox"></div>
+                <div id="thurs930PM" class="timebox halfhour"></div>
+            </div>
+            <div id="friday" class="weekday">
+                <div id="friTime" class="timebox th">Fri</div>
+                <div id="fri8AM" class="timebox"></div>
+                <div id="fri830AM" class="timebox halfhour"></div>
+                <div id="fri9AM" class="timebox"></div>
+                <div id="fri930AM" class="timebox halfhour"></div>
+                <div id="fri10AM" class="timebox"></div>
+                <div id="fri1030AM" class="timebox halfhour"></div>
+                <div id="fri11AM" class="timebox"></div>
+                <div id="fri1130AM" class="timebox halfhour"></div>
+                <div id="fri12PM" class="timebox"></div>
+                <div id="fri1230PM" class="timebox halfhour"></div>
+                <div id="fri1PM" class="timebox"></div>
+                <div id="fri130PM" class="timebox halfhour"></div>
+                <div id="fri2PM" class="timebox"></div>
+                <div id="fri230PM" class="timebox halfhour"></div>
+                <div id="fri3PM" class="timebox"></div>
+                <div id="fri330PM" class="timebox halfhour"></div>
+                <div id="fri4PM" class="timebox"></div>
+                <div id="fri430PM" class="timebox halfhour"></div>
+                <div id="fri5PM" class="timebox"></div>
+                <div id="fri530PM" class="timebox halfhour"></div>
+                <div id="fri6PM" class="timebox"></div>
+                <div id="fri630PM" class="timebox halfhour"></div>
+                <div id="fri7PM" class="timebox"></div>
+                <div id="fri730PM" class="timebox halfhour"></div>
+                <div id="fri8PM" class="timebox"></div>
+                <div id="fri830PM" class="timebox halfhour"></div>
+                <div id="fri9PM" class="timebox"></div>
+                <div id="fri930PM" class="timebox halfhour"></div>
+            </div>
+        </div>
+        <h2>Custom Search</h2>
+        <div id="search">
+            <div id="section1">
+                <label for="q0" class="visuallyhidden"></label>
+                <div>
+                    <select class="search-criteria" id="f0" title="Choose which field to search">
+                        <option value="CRN" selected="selected">CRN</option>
+                        <option value="instructor">Professor</option>
+                        <option value="CCC">CCC</option>
+                        <option value="course">Course</option>
+                        <option value="title">Title</option>
+                        <option value="department">Department</option>
+                        <option value="before-time">Before this Time</option>
+                        <option value="after-time">After this Time</option>
+                    </select>
+                    <label class="check-label">
+                        <input type="checkbox" class="NOTcheck" name="not0" id="not0" value="NOT">NOT</label>
+                </div>
+                <input class="text searchBox medium asSearchBoxf" id="q0" name="q0" type="text"> </div>
+            <div class="selectContainer small">
+                <select class="and-or" id="c1" name="c1" title="Choose a boolean relationship between two search queries">
+                    <option value="AND" selected="selected">AND</option>
+                    <option value="OR">OR</option>
+                </select>
+            </div>
+            <div id="section2">
+                <label for="q1" class="visuallyhidden"></label>
+                <div class="selectContainer small">
+                    <select class="search-criteria" id="f1" title="Choose which field to search">
+                        <option value="CRN" selected="selected">CRN</option>
+                        <option value="instructor">Professor</option>
+                        <option value="CCC">CCC</option>
+                        <option value="course">Course</option>
+                        <option value="title">Title</option>
+                        <option value="department">Department</option>
+                        <option value="before-time">Before this Time</option>
+                        <option value="after-time">After this Time</option>
+                    </select>
+                    <label class="check-label">
+                        <input type="checkbox" class="NOTcheck" name="not1" id="not1" value="NOT">NOT</label>
+                </div>
+                <input class="text searchBox medium asSearchBoxf" id="q1" name="q1" type="text"> </div>
+            <div class="selectContainer small">
+                <select class="and-or" id="c2" name="c2" title="Choose a boolean relationship between two search queries">
+                    <option value="AND" selected="selected">AND</option>
+                    <option value="OR">OR</option>
+                </select>
+            </div>
+            <div id="asFieldRow2">
+                <label for="q2" class="visuallyhidden"></label>
+                <div class="selectContainer small">
+                    <select class="search-criteria" id="f2" title="Choose which field to search">
+                        <option value="CRN" selected="selected">CRN</option>
+                        <option value="instructor">Professor</option>
+                        <option value="CCC">CCC</option>
+                        <option value="course">Course</option>
+                        <option value="title">Title</option>
+                        <option value="department">Department</option>
+                        <option value="before-time">Before this Time</option>
+                        <option value="after-time">After this Time</option>
+                    </select>
+                    <label class="check-label">
+                        <input type="checkbox" class="NOTcheck" name="not2" id="not2" value="NOT">NOT</label>
+                </div>
+                <input class="text searchBox medium asSearchBoxf" id="q2" name="q2" type="text"> </div>
+            <div class="row">
+                <button type="button" class="button" id="search-button" title="Seach with these Parameters">Search</button>
+                <button type="button" class="button" id="suggest-button" title="Seach for courses that fit in your schedule">Suggest Courses</button>
+            </div>
+        </div>
+        <h2>CRN Clipboard</h2>
+        <div id="CRNs">
+            <div id="CRN" class="CNRlist"></div>
+        </div>
+        <h2>Export/Share</h2>
+        <div id="port_controls">
+            <button type="button" name="export-button" id="export-button">Export</button>
+            <button type="button" name="import-button" id="import-button">Import</button>
+            <button onclick="auth();" type="button" name="auth-button" id="auth-button">Log In</button>
+            <p>Send your schedule to a friend through Facebook messenger:</p>
+            <div class="fb-send" data-href="https://www.banner.bucknell.edu/BANPRD/hwzkschd.P_Bucknell_SchedDisplay#calendar"></div>
+        </div>
+    </div>
+    <!-- END COPY -->
+
+
+  </body>
+</html>
